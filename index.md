@@ -10,6 +10,8 @@ I tested a variety of models including quardratic discriminant analysis, K-neare
 
 <img src="Projects/Predicting Customer Churn/Image for churn.jpg?raw=true"/>
 
+[![](https://img.shields.io/badge/R-black?logo=R)](#)
+
 ---
 [Project 2 Title](/pdf/sample_presentation.pdf)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
