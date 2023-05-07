@@ -2,11 +2,11 @@
 
 ---
 
-### Prediction Customer Churn in a Telecommunication Company
+### Predicting Customer Churn in a Telecommunications Company
 
 My task was to develop a predictive model to identify 3000 customers most likely to churn for a major U.S. wireless telecommunications company. Additionally, I provided a non-technical description of the characteristics of customer churn that could help establish a proactive churn management program.
 
-I tested a variety of models including quardratic discriminant analysis, K-nearest neighbors. classification trees and logistic regression.
+I tested a variety of models including quardratic discriminant analysis, logistic regression, K-nearest neighbors and classification trees. A logistic Regression was chosen due to its high interpretability and accuracy. 
 
 <img src="Projects/Predicting Customer Churn/Image for churn.jpg?raw=true"/>
 
