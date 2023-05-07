@@ -2,10 +2,12 @@
 
 ---
 
-### Category Name 1 
+### Prediction Customer Churn in a Telecommunication Company
 
-[Project 1 Title](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+My task was to develop a predictive model to identify 3000 customers most likely to churn for a major U.S. wireless telecommunications company. Additionally, I provided a non-technical description of the characteristics of customer churn that could help establish a proactive churn management program.
+
+[Logistic Regression ROC Curve](/sample_page)
+<img src="Projects/Predicting Customer Churn/ROC Curve.png?raw=true"/>
 
 ---
 [Project 2 Title](/pdf/sample_presentation.pdf)
