@@ -10,7 +10,7 @@ I tested a variety of models including quardratic discriminant analysis, logisti
 
 <img src="Projects/Predicting Customer Churn/Image for churn.jpg?raw=true"/>
 
-[![](https://img.shields.io/badge/-R-white?logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEiIHdpZHRoPSI2MDAiIGhlaWdodD0iNjAwIj48cGF0aCBkPSJNMTI5IDExMWMtNTUgNC05MyA2Ni05MyA3OEwwIDM5OGMtMiA3MCAzNiA5MiA2OSA5MWgxYzc5IDAgODctNTcgMTMwLTEyOGgyMDFjNDMgNzEgNTAgMTI4IDEyOSAxMjhoMWMzMyAxIDcxLTIxIDY5LTkxbC0zNi0yMDljMC0xMi00MC03OC05OC03OGgtMTBjLTYzIDAtOTIgMzUtOTIgNDJIMjM2YzAtNy0yOS00Mi05Mi00MmgtMTV6IiBmaWxsPSIjZmZmIi8+PC9zdmc+)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#)
+[![](https://img.shields.io/badge/-R-white?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAq1BMVEVHcEzBw8Ymer63uLwnfcessrspfskqe74nfMXGyMvHyczKzc/GyMvExcgAbM+Xo7MvgMk1gMG6vMEedb20tbm7vcG4ub0le8OgqrW1trq8vsI4gsPLztDLzc/Bw8bIysy7u77KzM4bdLvFxsrFxsm4ub24vsW0uL4qf8krfcW1u8Iedr15lrIqfsgWcrwufb8jesMmfMUjecGprLOysrYac7pfkr9XibWLnrIW/4fEAAAAOXRSTlMAxQ9lmSa5C+n+wwIMpw2J2emkxBYzwaSr3vb1FjTmxk1kBNmXFoatz/KNbp2BFdDe3PWlM1CtlrbdLqX1AAAAaUlEQVQI1x3MhxWCMAAFwA/ptEBQsaAoHcGCff/JfHADHAC4nudikp58x/JJBewdVZj63JgXMlUyyjn/PKEOLAjlZZQ/WNtj0Ep6v2ksVxsddtHjy4AFWe+iQcbXqbMTKvr4PddCILfFH4ZCBzH6Z8MHAAAAAElFTkSuQmCC)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#)
 
 ---
 ### Contruction of a Diversified Fund using Mean-Variance Portfolio Theory
