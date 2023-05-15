@@ -6,7 +6,7 @@
 
 My task was to develop a predictive model to identify 3000 customers most likely to churn for a major U.S. wireless telecommunications company. Additionally, I provided a non-technical description of the characteristics of customer churn that could help establish a proactive churn management program.
 
-I tested a variety of models including quardratic discriminant analysis, logistic regression, K-nearest neighbors and classification trees. A logistic regression was chosen due to its high interpretability and accuracy. 
+I tested a variety of models including quardratic discriminant analysis, logistic regression, K-nearest neighbors and classification trees. I also preformed stepwise regression and lasso regularisation aiding my variable selection. A logistic regression was chosen due to its high interpretability and accuracy. 
 
 <img src="Projects/Predicting Customer Churn/Image for churn.jpg?raw=true"/>
 
