@@ -13,7 +13,9 @@ I tested a variety of models including quardratic discriminant analysis, logisti
 [![](https://img.shields.io/badge/-R-white?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAFCAMAAAC+RAbqAAAAVFBMVEUkaLtGebYeZrpmha27vcB9kKsqaLJHcEy1tbi4ur2wqaasrLCzs7U3dL80cry9v8KIoL6wsrYPX8Cpqa2trrO0tbkcYa8hZrYYXq1ifaFJdapafaiTrNhfAAAAHHRSTlPqu6Nw0ZvcACrEHIV+p6ahXbMssV3wzOFwUXGykwqUQgAAAC5JREFUCNcFwYUBACAAA6DZ3a3//ylAJ26K0+Amh0gEhq+g66E3ASkPlGXrzv0BHk4BslaTwTwAAAAASUVORK5CYII=)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#)
 
 ---
-[Project 2 Title](/pdf/sample_presentation.pdf)
+### Contruction of a Diversified Fund using Mean-Variance Portfolio Theory
+
+
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
