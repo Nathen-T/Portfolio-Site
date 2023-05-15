@@ -20,7 +20,7 @@ I contructed a well-diversified portfolio of 20 stocks listed on the Johannesbur
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 [![](https://img.shields.io/badge/-R-white?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAMAAAD3JJ6EAAAAmVBMVEVHcEyur7S7vcC6vMAgZ70hZ7ogZLW7vsG1troIV7y4ur6oqa2krLcjab4hZ72lp65Md6wfZbcsarOmpqyvsLS0trq/wcStrbGjo6imp6y7vcF8mb6ts7u1t7qPmqqxs7atrrKTmqYoarkxbrUiaLwgZbZOe7IgZbSZnKQnZ7J8jKNqgqMYX64eYq9PdqaZk5UaYLAXXax/i50tGhcPAAAAM3RSTlMAyo/+wejyzCMN+jp60ZqoFtzpHfXlPEl23NogkfV62I+52/R90a3GqNK1qfW7lS2SXo58F8diAAAAVUlEQVQI1w3GxQGAMAAEsANKW9zd3XX/4SCvAFxM1aKqORAyieW6blkamCRmJiFknKEGXDHk3pFXCH7013SWF5qQlC116XkBXtx07kYPBT97mOx7fz7ZUQXODTFLuAAAAABJRU5ErkJggg==)](#) 
-[![](https://img.shields.io/badge/-R-white?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAPFBMVEVHcEx1qtt1qtt1qtt1qtt1qtt1qtt1qtt1qtt1qtt1qtt1qtt1qtuwz+t6rd2SvOObwuXM4PLA2e+Ds9/keeydAAAADHRSTlMAbnHYNr3y/BXH2tnrBrlGAAAAe0lEQVQI121PQQLDIAhDqygbiOL//1phW0/LLSQhAADQE2FDSh0CpTZ2tFqCXvzDdQa9Mg/VqeMMaod0zMOWmHgkAblxCu/lBgIMbiquM0LsnstCZv7qMkw/euTFti6NvO/fYtM93HL0Pzj9UN4PfZU/95+TMyEjZf/vBv9JCJE0YmHHAAAAAElFTkSuQmCC)](#)
+[![](https://img.shields.io/badge/-R-white?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAM1BMVEV1qtt1qtt1qtt1qttHcEx1qtt1qtt1qtt1qtt1qtt/sN691u6kx+iNueKnyei00eyXv+SwI8RMAAAACnRSTlMaK73/AL8sgtj6EgaIyQAAAFxJREFUCNdNjksSwCAIQ2PFqoCf+5+2wXHRLCBvyGSACGrrvVXQSXryUUkC0KtqEFDpzdYkVTRO32q8NXTCNHOufsB9jQMRWz5sRCwKpuvYUYCSr1gt76XyCv7vfABLA05qiPmQAAAAAElFTkSuQmCC)](#)
 ---
 [Project 3 Title](http://example.com/)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
