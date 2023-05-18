@@ -1,0 +1,745 @@
+---
+title: "Assignment"
+output:
+  pdf_document: default
+  html_document: default
+---
+## Load up the data
+
+```{r error=FALSE,warning=FALSE,message=FALSE}
+library(readxl)
+jse <- read_excel("D:/Uni Work/Year 3/ACTL3182/Assignmen t/JSE stocks weekly data.xlsx")
+jse <- jse[-c(1,2),] # remove unnecessary rows
+jse <- lapply(jse,as.numeric) # change data to numeric  
+jse <- as.data.frame(jse) # change to data frame
+```
+
+Fix Date
+```{r message=FALSE,warning=FALSE}
+library(dplyr)
+library(janitor)
+jse <- jse %>% 
+  mutate(Date = as.numeric(Date)) %>%
+  mutate(Date = excel_numeric_to_date(Date)) 
+```
+
+For stock selection it was decided to use stocks with data before 2016
+```{r}
+jse <- jse[,colSums(is.na(jse))<nrow(jse)] # remove all NA cols
+jse <- jse[,colSums(is.na(jse))<nrow(jse)-1] # remove first row
+jse <- jse[,colSums(is.na(jse))<nrow(jse)-206] # remove stocks with ipos after 2016 row 314
+```
+20 stock were selected
+```{r}
+top20 <- jse[c(1:9,26,18,17,19,258,231,259,257,256,22,11,264,14)]
+top20 <- top20[-3]
+colnames(top20)
+```
+
+\newpage
+## Question 1
+Calculate the continuous weekly returns
+```{r}
+wr <- c()
+wr <- as.data.frame(wr)
+for (i in 2:21) {
+  a <- top20[i]
+  for (x in 1:521){
+    b <- log(a[x+1,1]/a[x,1]) # compute continuous weekly returns
+    wr[x+1,i-1] <- b
+    }
+}
+wr <- cbind(top20[1],wr)
+colnames(wr) = colnames(top20)
+```
+Compound the continuous weekly returns
+```{r}
+wr[is.na(wr)] <- 0
+cwr <- c()
+cwr <- as.data.frame(cwr)
+for (i in 2:21){
+  a <- wr[i]
+  b <- 0
+  for (x in 2:522){
+    b <- a[x,1] + b # compound the returns
+    cwr[x,i-1] <- b
+  }
+}
+cwr <- cbind(top20[1],cwr)
+colnames(cwr) = colnames(top20)
+```
+Graph the Returns
+```{r warning=FALSE,message=FALSE,fig.dim = c(10, 4)}
+library(reshape2)
+library(ggplot2)
+
+#split data in half for better visualisation
+cwr1 <- cwr[,c(1:11)]
+cwr2 <- cwr[,c(1,12:21)]
+
+d1 <- melt(cwr1, id.vars="Date")
+d2 <- melt(cwr2, id.vars="Date")
+
+ggplot(d1, aes(Date,value, col=variable)) + 
+  geom_point() + 
+  stat_smooth() +
+  labs(y = 'Cumulative Continuously Compounded Returns', color = 'Stock')
+  
+ggplot(d2, aes(Date,value, col=variable)) + 
+  geom_point() + 
+  stat_smooth() +
+  labs(y = 'Cumulative Continuously Compounded Returns', color = 'Stock')
+```
+
+\newpage
+## Question 2
+Calaculate weekly returns
+```{r}
+wr1 <- c()
+wr1 <- as.data.frame(wr1)
+for (i in 2:21) {
+  a <- top20[i]
+  for (x in 1:521){
+    b <- a[x+1,1]/a[x,1] - 1
+    wr1[x+1,i-1] <- b
+  }
+}
+wr1 <- cbind(top20[1],wr1)
+colnames(wr1) = colnames(top20)
+```
+Average weekly retruns
+```{r}
+avwr <- c()
+avwr <- as.data.frame(avwr)
+for (i in 2:21) {
+  a <- wr1[i]
+  num <- sum(is.na(a))
+  a[is.na(a)] <- 0
+  b <- sum(a)/(nrow(wr1)-num)
+  avwr[i-1,1] <- b
+}
+Stock <- c(colnames(top20))
+Stock <- as.data.frame(Stock)
+Stock <- Stock[-1,1]
+avwr <- cbind(Stock,avwr) # labeling the returns
+```
+Compute expected annual returns
+```{r}
+avwr <- avwr %>%
+  mutate('Expected Annual Returns' = (1 + V1)^52 - 1)
+```
+Compute weekly standard deviations of returns 
+```{r}
+wsd <- c()#
+wsd <- as.data.frame(wsd)
+for (i in 2:21){
+  a <- wr1[i]
+  a <- as.vector(a)
+  b <- var(a,na.rm=TRUE)
+  wsd[i-1,1] <- b^0.5
+}
+colnames(wsd) <- 'SD'
+```
+\newpage
+Compute annual standard deviations of returns
+```{r fig.dim = c(6, 6)}
+wsd <- wsd %>% mutate('Standard Deviation' = sqrt(52)*SD)
+results <- cbind(avwr[c(1,3)],wsd[2])
+knitr::kable(results)
+```
+
+\newpage
+## Question 3
+Calculate the variance-covariance matrix annual returns 
+```{r}
+vc <- matrix(cov(wr1[c(2:21)],use = "pairwise.complete.obs"),ncol=20)
+vc <- 52*vc
+vci <- as.matrix(solve(vc))
+```
+Calculate lambda and gamma from mean of 16% return
+```{r}
+I <- matrix(c(rep(1,20)),ncol=1,nrow=20) # all 1s
+A <- t(I) %*% vci %*% I # or sum(VCi)
+z <- as.matrix(results[2])
+B <- t(I) %*% vci %*% z
+C <- t(z) %*% vci %*% z
+D <- A*C - B^2
+mu <- 0.16
+L <- as.numeric((C - mu*B)/D)
+G <- as.numeric((mu*A - B)/D)
+```
+Calculate the weights
+```{r}
+w <- L*vci%*%I + G*vci%*%z
+colnames(w) <- 'Weights'
+w <- cbind(avwr[1],w)
+knitr::kable(w)
+```
+
+\newpage
+## Question 4
+Plot the minimum variance for each return between -30% and 50% with 1% increments
+```{r, warning=FALSE}
+mu1 <- seq(-0.3,0.5,0.01) 
+L1 <- as.numeric((C - mu1*B)/D)
+G1 <- as.numeric((mu1*A - B)/D)
+```
+Compute weights
+```{r}
+w1 <- c()
+w1 <- as.data.frame(w1)
+for (i in 1:81){
+  w1[1:20,i] <- L1[i]*vci%*%I + G1[i]*vci%*%z
+}
+```
+Compute minimum variance and standard deviation
+```{r}
+var1 <- c()
+var1 <- as.data.frame(var1)
+for (i in 1:81){
+  a <- as.matrix(w1[i])
+  b <- t(a) %*% vc %*% a
+  var1[i,1] <- b^0.5
+}
+mu.var <- cbind(mu1,var1)
+```
+Plot
+```{r fig.dim = c(8, 4)}
+ggplot(mu.var) + 
+  aes(x=V1,y=mu1) + 
+  geom_point() +
+  labs(x = 'Standard Deviation', y = 'Expected Return',title = 'Minimum Variance Frontier')
+```
+
+\newpage
+## Question 5
+```{r}
+colnames(mu.var) <- c("Expected Annual Returns","Standard Deviation")
+
+names = c('NPN','FSR','IMP','MTN','SOL','SBK','APN','NED','ABG','VOD','BVT','BTI'
+          ,'CFR','GLN','BHP','AGL','EXX','AMS','S32',"CLS")
+
+ggplot(mu.var, aes(x=`Standard Deviation`, y=`Expected Annual Returns`)) + 
+  geom_point() +
+  geom_point(data= results, aes(x=`Standard Deviation`, y=`Expected Annual Returns`),
+             colour= "red", size = 3 ) +
+  labs(x = "Standard Deviation", y = "Expected Returns") +
+  geom_text(data=results, aes(label=names),size = 3, hjust=0.5, vjust=-1)
+```
+
+\newpage
+## Question 6
+```{r}
+w.mvp <- vci%*%I/as.numeric(A) #vci, I and A from Question 3
+w.mvp <- cbind(results[1],w.mvp)
+colnames(w.mvp) = c("Stock","Weight")
+knitr::kable(w.mvp)
+```
+
+\newpage
+## Question 7
+```{r}
+ew <- as.matrix(rep(0.05,20))
+mu.ew <- as.numeric(t(ew)%*%z) # z from Question 3
+var.ew <- as.numeric(t(ew)%*%vc%*%ew) # vc from Question 3
+sd.ew <- sqrt(var.ew)
+ewp <- cbind(mu.ew,sd.ew)
+colnames(ewp) = c("Expected Annual Returns","Standard Deviation")
+ewp <- as.data.frame(ewp)
+ewp.names <- c("Equally Weighted Portfolio")
+ggplot(mu.var, aes(x=`Standard Deviation`, y=`Expected Annual Returns`)) + 
+  geom_point() +
+  geom_point(data=ewp, aes(x=`Standard Deviation`, y=`Expected Annual Returns`), 
+             colour= "red", size = 3 ) +
+  labs(x = "Standard Deviation", y = "Expected Returns") +
+  geom_text(data=ewp, aes(label=ewp.names),hjust=0.5, vjust=-1)
+```
+
+\newpage 
+## Question 8
+Import data
+```{r message=FALSE}
+FSTE <- read_excel(
+  "D:/Uni Work/Year 3/ACTL3182/Assignmen t/FSTE 100 and FTSE JSE indices.xlsx")
+FSTE <- FSTE[-c(1,2),]
+FSTE <- lapply(FSTE,as.numeric)
+FSTE <- as.data.frame(FSTE)
+colnames(FSTE) <- c('Date',"FSTE/JSE","FSTE.100.Index")
+FSTE <- FSTE %>% 
+  mutate(Date = as.numeric(Date)) %>%
+  mutate(Date = excel_numeric_to_date(Date))
+```
+Compute expected annual returns and standard deviation
+```{r}
+FSTE.wr <- c()
+FSTE.wr <- as.data.frame(FSTE.wr)
+
+for (x in 1:521){
+  b <- FSTE[x+1,3]/FSTE[x,3] - 1
+  FSTE.wr[x+1,1] <- b
+} # weekly returns
+
+FSTE.avwr <- mean(FSTE.wr$V1,na.rm = TRUE) #Average weekly returns
+FSTE.r <- (1 + FSTE.avwr)^52 - 1 # Expected annual returns
+
+FSTE.wsd <- var(FSTE.wr,na.rm=TRUE)^0.5 # Compute weekly standard deviation of returns
+FSTE.sd <- sqrt(52)*FSTE.wsd # Compute annual standard deviation
+
+FSTE100 <- cbind(FSTE.r,FSTE.sd)
+FSTE100 <- as.data.frame(FSTE100)
+colnames(FSTE100) <- c('Expected Annual Returns','Standard Deviation')
+rownames(FSTE100) <- 'FSTE 100 Index'
+knitr::kable(FSTE100)
+```
+
+\newpage
+## Question 9
+Add FSTE 100 index to portfolio
+```{r}
+F1 <- as.data.frame(c('FSTE100',FSTE100[1],FSTE100[2]))
+colnames(F1) <- c('Stock','Expected Annual Returns','Standard Deviation')
+np <- rbind(results,F1)
+```
+Covariance matrix 
+```{r}
+colnames(FSTE.wr) <- 'FSTE100'
+np.wr <- cbind(wr1,FSTE.wr)
+np.vc <- matrix(cov(np.wr[c(2:22)],use = "pairwise.complete.obs"),ncol=21)
+np.vc <- 52*np.vc
+np.vci <- as.matrix(solve(np.vc))
+```
+Calculate lambda and gamma from mean of 16% return 
+```{r}
+I <- matrix(c(rep(1,21)),ncol=1,nrow=21) # all 1s
+A <- t(I) %*% np.vci %*% I # or sum(VCi)
+z <- as.matrix(np[2])
+B <- t(I) %*% np.vci %*% z
+C <- t(z) %*% np.vci %*% z
+D <- A*C - B^2
+mu <- 0.16
+L <- as.numeric((C - mu*B)/D)
+G <- as.numeric((mu*A - B)/D)
+```
+Calculate the weights
+```{r}
+np.w <- L*np.vci%*%I + G*np.vci%*%z
+colnames(np.w) <- 'Weights'
+np.w <- cbind(np[1],np.w)
+```
+Calculate variance and standard deviation for with and without FSTE 100 index
+```{r}
+w.matrix <- as.matrix(w[2])
+Var.without <- t(w.matrix) %*% vc %*% w.matrix
+SD.without <- Var.without^0.5
+np.w.matrix <- as.matrix(np.w[2])
+Var.with <- t(np.w.matrix) %*% np.vc %*% np.w.matrix
+SD.with <- Var.with^0.5
+q <- as.data.frame(cbind('Standard deviation',as.numeric(SD.without),as.numeric(SD.with),
+                         as.numeric(SD.without-SD.with) ))
+colnames(q) <- c(' ', 'without FSTE 100', 'with FSTE 100','risk eliminated')
+knitr::kable(q)
+```
+
+
+\newpage
+## Question 10
+Plot the minimum variance for each return between -30% and 50% with 1% increments
+```{r warning=FALSE}
+mu1 <- seq(-0.3,0.5,0.01) 
+L1 <- as.numeric((C - mu1*B)/D)
+G1 <- as.numeric((mu1*A - B)/D)
+```
+Compute weights
+```{r}
+np.w1 <- c()
+np.w1 <- as.data.frame(np.w1)
+for (i in 1:81){
+  np.w1[1:21,i] <- L1[i]*np.vci%*%I + G1[i]*np.vci%*%z
+}
+```
+Compute minimum variance and standard deviation
+```{r}
+np.var1 <- c()
+np.var1 <- as.data.frame(np.var1)
+for (i in 1:81){
+  a <- as.matrix(np.w1[i])
+  b <- t(a) %*% np.vc %*% a
+  np.var1[i,1] <- b^0.5
+}
+np.mu.var <- cbind(mu1,np.var1)
+colnames(np.mu.var) <- c("Expected Annual Returns","Standard Deviation")
+```
+Plot both minimum variance frontiers
+```{r fig.dim = c(8, 6)}
+comb <- bind_rows(list(a = mu.var, b = np.mu.var), .id = 'Portfolio')
+
+ggplot(comb)+
+  geom_point(aes(x=`Standard Deviation`, y=`Expected Annual Returns`, color = Portfolio))+
+  scale_color_manual(values = c("red", "blue"), 
+                     labels = c('without FSTE 100','with FSTE 100')) +
+  labs(x = 'Standard Deviation', y = 'Expected Return',title = 'Minimum Variance Frontier')
+```
+
+
+\newpage
+## Question 11
+Calculate variance covariance matrix
+```{r}
+library(quadprog)
+z <- as.matrix(np[2])
+d <- c(rep(1,20),0) 
+Amat = cbind(rep(1, 3), z, d) # constraints 
+bvec = c(1, 0.16,0.97) # weights = 1, expected return = 16% and JSE stocks >= 97%
+eleven = solve.QP(Dmat = 2 * np.vc, dvec = rep(0, 21), Amat = Amat, bvec = bvec, meq = 2)
+w2 <- eleven$solution
+F2 <- data.frame(first_column = 'FSTE100')
+colnames(F2) <- c('Stock')
+eleven.names <- rbind(avwr[1],F2)
+w2 <- cbind(eleven.names,w2)
+colnames(w2) = c('Stock','Weights')
+knitr::kable(w2)
+```
+
+## Question 12
+Mining comapanies: Glencore, BHP, Anglo American PLC, Exxaro Resources, 
+Anglo American platinum LTD, South32 LTD, Impala platinum holdings limited.
+```{r}
+sum(w[c(14,15,16,17,18,19,3),2]) # from question 6
+```
+
+Portfolio from question 6 has a expected return of 16% with a weighting of roughly 5.3% in the mining industry
+
+\newpage
+## Question 13
+The frontier is the same as question 4
+```{r fig.dim = c(8, 6)}
+ggplot(mu.var) + 
+  aes(x = `Standard Deviation`, y = `Expected Annual Returns`) + 
+  geom_point() +
+  labs(x = 'Standard Deviation', y = 'Expected Return',title = 'Minimum Variance Frontier')
+```
+
+\newpage 
+## Question 14
+```{r warning=FALSE,message=FALSE}
+library(IntroCompFinR)
+z <- as.matrix(results[2])
+wns <- efficient.portfolio(z,vc,0.16,shorts = FALSE) # no short sales
+wns$er
+```
+The expected return is not exactly 16% but is close
+```{r}
+wwns <- cbind(w,wns$weights)
+colnames(wwns) <- c('Stock','Weights with short sale', 'Weights without short sale')
+knitr::kable(wwns)
+```
+With no short sales allowed 8 of the stock have a zero weighting. Also 5 of them are mining companies leaving only 2 mining companies in the portfolio. All of the short sales have been given a 0 weighting which is no surprise. Only 3 stocks increased in weight when short sale wasn't allowed, excluding the negative weighted stocks in the short sale portfolio. 
+
+\newpage
+## Question 15
+```{r}
+wns.mvp <- globalMin.portfolio(z,vc,shorts = FALSE) # mvp short sale not allowed
+wwns.mvp <- cbind(w.mvp,wns.mvp$weights) # short sale weights same from Question 6
+colnames(wwns.mvp) = c('Stock','Weights with short sale', 'Weights without short sale')
+knitr::kable(wwns.mvp)
+```
+Without short sale 6 of the stocks have a 0 weighting where all 3 negative weighting stocks in the portfolio with short sale were given a 0 weighting. Also 4 of the stock that were given a zero weighting are in the mining industry. Only 5 stocks went up in weight from short sale to no short sale. This is excluding stocks that have a negative weighting in the short sale portfolio. 
+
+\newpage
+## Question 16
+```{r fig.dim = c(8, 6)}
+wns.e.sd <- cbind(wns.mvp$er,wns.mvp$sd)
+wns.e.sd <- as.data.frame(wns.e.sd)
+colnames(wns.e.sd) <- c("Expected Annual Returns","Standard Deviation")
+wns.e.sd.names <- 'No short sales allowed'
+#The frontier is the same as question 13
+ggplot(mu.var) + 
+  aes(x = `Standard Deviation`, y = `Expected Annual Returns`) + 
+  geom_point() +
+  geom_point(data=wns.e.sd, aes(x = `Standard Deviation`, y = `Expected Annual Returns`),
+             colour= "red", size = 3 ) +
+  labs(x = 'Standard Deviation', y = 'Expected Return',title = 'Minimum Variance Frontier') +
+    geom_text(data=wns.e.sd, aes(label=wns.e.sd.names),hjust=-0.05, vjust=-1)
+```
+The no short sales allowed minimum variance portfolio is inside the minimum variance frontier with short sales allowed. Thus this portfolio has a greater standard deviation/risk for the same expected return compared to a portfolio with short sales allowed. 
+
+\newpage
+## Question 17
+import the data
+```{r}
+TB <- read_excel("D:/Uni Work/Year 3/ACTL3182/Assignmen t/South Africa 3 month bill rates weekly.xlsx")
+TB$Name <- as.Date(TB$Name)
+TB <- as.data.frame(TB)
+colnames(TB) <- c('Date','Treasury Bill')
+```
+Compute expected annual returns and standard deviation
+```{r}
+# discount yield
+TB.dy <- TB %>% mutate(`Treasury Bill` = `Treasury Bill`/100 )
+# holding period return
+TB.hpy <- TB.dy %>% mutate(`Treasury Bill` = 3*`Treasury Bill`/(12-3*`Treasury Bill`) ) 
+# effective annual yield
+TB.eay <- TB.hpy %>% mutate(`Treasury Bill` = (1 + `Treasury Bill`)^4 - 1 ) 
+# Expected annual returns
+TB.r <- mean(TB.eay$`Treasury Bill`,na.rm = TRUE)
+# Compute annual standard deviation of returns
+TB.sd <- var(TB.eay$`Treasury Bill`,na.rm=TRUE)^0.5 
+
+TBrsd <- cbind(TB.r,TB.sd)
+TBrsd <- as.data.frame(TBrsd)
+colnames(TBrsd) <- c('Expected Annual Returns','Standard Deviation')
+rownames(TBrsd) <- '3 Month Treasury Bill'
+knitr::kable(TBrsd)
+```
+
+\newpage
+## Question 18
+Add treasury bill into portfolio
+```{r}
+T1 <- as.data.frame(c('3 Month Treasury Bill',TBrsd[1],TBrsd[2]))
+colnames(T1) = colnames(results)
+tp <- rbind(results,T1)
+```
+Plot the minimum variance for each return between -30% and 50% with 1% increments
+```{r fig.dim = c(8, 6)}
+# Calculate weekly returns for treasury bill
+TB.wr <- TB.eay %>% mutate(`Treasury Bill` = (`Treasury Bill` + 1)^(1/52) - 1) 
+colnames(TB.wr) <- c('Date','3 Month Treasury Bill')
+tp.wr <- cbind(wr1,TB.wr[2])
+tp.vc <- matrix(cov(tp.wr[c(2:22)],use = "pairwise.complete.obs"),ncol=21)
+tp.vc <- 52*tp.vc
+z <- as.matrix(tp[2])
+
+tp.var1 <- c()
+tp.var1 <- as.data.frame(tp.var1)
+mu1 <- seq(0.01,0.33,0.01) # cannot have negative expected returns as no short sales
+# Also no solution after 33% returns
+for (i in 1:length(mu1)){
+  a <- efficient.portfolio(z,tp.vc,mu1[i],shorts = FALSE)$sd
+  tp.var1[i,1] <- a
+}
+
+tp.mu.var <- cbind(mu1,tp.var1)
+colnames(tp.mu.var) <- c("Expected Annual Returns","Standard Deviation")
+
+ggplot(tp.mu.var) + 
+  aes(x=`Standard Deviation`,y=`Expected Annual Returns`) + 
+  geom_point() +
+  labs(x = 'Standard Deviation', y = 'Expected Return',title = 'Minimum Variance Frontier')
+```
+
+\newpage 
+## Question 19
+Calculating and comparing weights
+```{r}
+tpw1 <- efficient.portfolio(z,tp.vc,0.16,shorts = FALSE) 
+tpww1 <- tpw1$weights
+wns.tpw1 <- wwns[c(1,3)] # from question 14
+insert <- c('3 Month Treasury Bill', 0)
+wns.tpw1 <- rbind(wns.tpw1,insert)
+wns.tpw1 <- cbind(wns.tpw1,tpww1)
+wns.tpw1$`Weights without short sale` <- as.numeric(wns.tpw1$`Weights without short sale`)
+colnames(wns.tpw1) <- c('Stock','without Treasury Bill','with Treasury Bill')
+knitr::kable(wns.tpw1)
+```
+Compare risk
+```{r}
+cr1 <- cbind(wns.mvp$sd,tpw1$sd)
+cr1 <- as.data.frame(cr1)
+colnames(cr1) <- c('without Treasury Bill','with Treasury Bill')
+rownames(cr1) <- 'Standard Deviation'
+knitr::kable(cr1)
+```
+By adding the treasury bill all zero weights remained the same, however, another 6 stocks are reduced to zero weight. In this new portfolio the treasury bill is weighted 52.7% of the portfolio while the rest is distributed to only 6 stocks. This is to be expected as treasury bills are safe with little risk and correlation to stocks. Four stocks reduced in weight and two increased in weight. The standard deviation is roughly 4.6% less with the treasury bill making it a more risk averse portfolio.
+
+\newpage
+## Question 20
+Calculating and comparing weights
+```{r}
+tpw <- globalMin.portfolio(z,tp.vc,shorts = FALSE) 
+tpww <- tpw$weights
+wns.tpw <- wwns.mvp[c(1,3)] # from question 15
+insert <- c('3 Month Treasury Bill', 0)
+wns.tpw <- rbind(wns.tpw,insert)
+wns.tpw <- cbind(wns.tpw,tpww)
+wns.tpw$`Weights without short sale` <- as.numeric(wns.tpw$`Weights without short sale`)
+colnames(wns.tpw) <- c('Stock','without Treasury Bill','with Treasury Bill')
+knitr::kable(wns.tpw)
+```
+Comparing risk and expected return
+```{r}
+cr <- cbind(wns.mvp$sd,tpw$sd)
+ce <- cbind(wns.mvp$er,tpw$er)
+cer <- rbind(cr,ce)
+cer <- as.data.frame(cer)
+colnames(cer) <- c('without Treasury Bill','with Treasury Bill')
+rownames(cer) <- c('Standard Deviation','Expected Annual Return')
+knitr::kable(cer)
+```
+By adding the 3 month treasury bill into the no short sale allowed portfolio the minimum variance portfolio is 99.9% treasury bill, with only 6 stocks having very small weights. It was interesting to see that Sasol that was weighted zero in the portfolio without treasury bill increased in weight in the new portfolio, however, 5 other stocks were reduced to zero. The new portfolio had roughly half the expected annual return, however, the standard deviation was 125 times less making it a much safer portfolio. 
+
+\newpage
+## Question 21
+### Part A
+Make new portfolio with 20 stocks, FSTE100 and tresury bond
+```{r fig.dim = c(8, 6)}
+newp <- rbind(np,T1)
+newp.wr <- cbind(np.wr,TB.wr[2])
+newp.vc <- matrix(cov(newp.wr[c(2:23)],use = "pairwise.complete.obs"),ncol=22)
+newp.vc <- 52*newp.vc
+z <- as.matrix(newp[2])
+
+newp.var1 <- c()
+newp.var1 <- as.data.frame(newp.var1)
+mu1 <- seq(0.01,0.33,0.01) # cannot have negative expected returns as no short sales
+# Also no solution after 33% returns
+for (i in 1:length(mu1)){
+  a <- efficient.portfolio(z,newp.vc,mu1[i],shorts = FALSE)$sd
+  newp.var1[i,1] <- a
+}
+
+newp.mu.var <- cbind(mu1,newp.var1)
+colnames(newp.mu.var) <- c("Expected Annual Returns","Standard Deviation")
+
+newpw <- efficient.portfolio(z,newp.vc,0.16,shorts = FALSE) # for Q22a
+
+ggplot(newp.mu.var) + 
+  aes(x=`Standard Deviation`,y=`Expected Annual Returns`) + 
+  geom_point() +
+  labs(x = 'Standard Deviation', y = 'Expected Return',title = 'Minimum Variance Frontier')
+```
+
+\newpage
+### Part B
+Exactly 92% equity and 8% treasury bill.
+```{r fig.dim = c(8, 6)}
+# extra constraints for exactly 8% treasury bills
+m <- matrix(0,22,22) 
+m[22,22]=1
+m1 <- c(rep(0,21),0.08)
+
+Amat <-  cbind(rep(1, 22), z, m, diag(1, nrow = 22)) 
+muP = seq(0.02,0.27,0.01) # finish at 0.27 start at 0.02 
+# As no solution less than 2% and greater than 27% at 1% increments.
+sdP = muP
+
+for (i in 1:length(muP)) {
+  bvec = c(1, muP[i], m1, rep(0, 22)) # constraint vector
+  result = solve.QP(Dmat = 2 * newp.vc, dvec = rep(0, 22), Amat = Amat, bvec = bvec, meq = 25)
+  sdP[i] = sqrt(result$value)
+}
+
+newpc.mu.var <- cbind(muP,sdP)
+colnames(newpc.mu.var) <- c("Expected Annual Returns","Standard Deviation")
+newpc.mu.var <- as.data.frame(newpc.mu.var)
+
+ggplot(newpc.mu.var) + 
+  aes(x=`Standard Deviation`,y=`Expected Annual Returns`) + 
+  geom_point() +
+  labs(x = 'Standard Deviation', y = 'Expected Return',title = 'Minimum Variance Frontier')
+```
+
+\newpage
+## Question 22
+### Part A and B
+```{r}
+newpw <- efficient.portfolio(z,newp.vc,0.16,shorts = FALSE) 
+hist(newpw$weights, main = 'Unconstrained', xlab = 'Weights')
+
+Amat <-  cbind(rep(1, 22), z, m, diag(1, nrow = 22)) 
+bvec = c(1, 0.16, m1, rep(0, 22))
+newpwc = solve.QP(Dmat = 2 * newp.vc, dvec = rep(0, 22), Amat = Amat, bvec = bvec, meq = 25)
+hist(newpwc$solution, main = 'Constrained', xlab = 'Weights')
+
+weights <- cbind(newp[1],newpw$weights,round(newpwc$solution, digits = 6))
+colnames(weights) = c('Stock', 'Unconstrained','Constrained')
+knitr::kable(weights)
+```
+Both portfolios have a significant amount of zero weights where the unconstrained portfolio has only 6 stocks and the treasury bill that is weighted 52.7%. The constrained portfolio has 9  stocks and the treasury bill. 
+
+\newpage
+## Question 23
+Compute of market portfolio expected annual returns and standard deviation
+```{r}
+FSTE.JSE.wr <- c()
+FSTE.JSE.wr <- as.data.frame(FSTE.JSE.wr)
+
+for (x in 1:521){
+  b <- FSTE[x+1,2]/FSTE[x,2] - 1
+  FSTE.JSE.wr[x+1,1] <- b
+} # weekly returns
+
+FSTE.JSE.avwr <- mean(FSTE.JSE.wr$V1,na.rm = TRUE) #Average weekly returns
+FSTE.JSE.r <- (1 + FSTE.JSE.avwr)^52 - 1 # Expected annual returns
+
+FSTE.JSE.wsd <- var(FSTE.JSE.wr,na.rm=TRUE)^0.5 # Compute weekly standard deviation of returns
+FSTE.JSE.sd <- sqrt(52)*FSTE.JSE.wsd # Compute annual standard deviation
+```
+Calculate the covariance with each stock with market portfolio 
+```{r}
+colnames(FSTE.JSE.wr) = 'FSTE/JSE'
+s1 <- cbind(wr1,FSTE.JSE.wr)
+s1.vc <- matrix(cov(s1[c(2:22)],use = "pairwise.complete.obs"),ncol=21)
+s1.vc <- 52*s1.vc
+```
+Calculate Betas
+```{r}
+betas <- c()
+for (i in 1:20){
+  a <- s1.vc[21,i] # stock covariance with market 
+  b <- s1.vc[21,21] # market variance
+  c <- a/b
+  betas[i] <- c
+}
+betas <- cbind(results[1],betas)
+colnames(betas) = c('Stock','Betas')
+knitr::kable(betas)
+```
+
+\newpage 
+## Question 24
+Calculate systematic risk
+```{r}
+sys <- c()
+for (i in 1:20){
+  a <- betas[i,2]^2 # beta of stock 
+  b <- s1.vc[21,21] # market variance
+  c <- a*b
+  sys[i] <- c
+}
+```
+Calculate non-systematic risk
+```{r}
+n.sys <- c()
+for (i in 1:20){
+  a <- sys[i] # systematic risk
+  b <- s1.vc[i,i] # stock variance
+  c <- b - a
+  n.sys[i] <- c
+}
+
+risk <- cbind(results[1],sys,n.sys)
+colnames(risk) <- c('Stock','Systematic Risk','Non-systematic Risk')
+knitr::kable(risk)
+```
+
+\newpage
+## Question 25
+Perform linear regression on the expected return 
+```{r}
+sml <- lm(results$`Expected Annual Returns`~results$`Standard Deviation`,data=results)
+coef <- sml$coefficients
+
+ggplot(results, aes(x=`Standard Deviation`,y=`Expected Annual Returns`)) + 
+  geom_point() +
+  geom_text(data=results, aes(label=names),size = 3, hjust=0.1, vjust=-1) +
+  geom_abline(intercept = coef[1], slope = coef[2], size =1.5, 
+              linetype = 'dashed', colour = 'red') +
+  labs(title = 'Security Market Line')
+```
+The security market line is negatively sloped, which is not normally the case as greater risk is associated with greater expected returns. To determine the stocks that are underpriced they would be above the line and overpriced they would be below the line. There are 8 stocks that are underpriced and they are Naspers, Clicks Group, Bidvest Group, Compagnie Financiere Richemont, FirstRand, Anglo American Platinum, South32 and Exxaro Resources. The others are overpriced
+```{r}
+riskfree <- coef[1]
+riskfree
+```
+The implied risk free rate is the intercept of the security market line which is 19.7%.
