@@ -133,7 +133,7 @@ Compute weekly standard deviations of returns
 wsd <- c()#
 wsd <- as.data.frame(wsd)
 for (i in 2:21){
-  a <- wr1[i]
+  a <- wr1[,i]
   a <- as.vector(a)
   b <- var(a,na.rm=TRUE)
   wsd[i-1,1] <- b^0.5
