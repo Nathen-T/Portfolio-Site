@@ -17,7 +17,7 @@ I tested a variety of models including quardratic discriminant analysis, logisti
 ---
 ### Mean-Variance Portfolio Optimisation
 
-I contructed a well-diversified portfolio of 20 stocks listed on the Johannesburg Stock Exchange using Harry Markowitz's mean-variance theory. My task involved picking the stocks, justifying their inclusion, and extracting data for indexes, exchange rates, and Treasury Bill rates.
+I contructed a well-diversified portfolio of 20 stocks listed on the Johannesburg Stock Exchange using Harry Markowitz's mean-variance theory. I picked the stocks, justified their inclusion and extracted data for indexes, exchange rates, and Treasury Bill rates.
 
 <img src="Projects/Mean Variance Optimal Porfolio/Mean Variance plot.png?raw=true"/>
 
