@@ -28,7 +28,7 @@ I contructed a well-diversified portfolio of 20 stocks listed on the Johannesbur
 ---
 [Project 3 Title](http://example.com/)
 
-### Analysis of COVID-19 Patients
+### Survival Analysis of COVID-19 Patients
 
 Using Brazilian COVID-19 data, I performed a descriptive analysis of hospitalized COVID-19 patients and conducted survival analysis using Kaplan-Meier and Cox regression methods. Additionally, I modeled the pathway of COVID-19 patients using a multistate model and estimated age-specific transition rates. 
 
