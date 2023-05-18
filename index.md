@@ -15,7 +15,7 @@ I tested a variety of models including quardratic discriminant analysis, logisti
 [View code on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Predicting%20Customer%20Churn/r%20code.R)
 
 ---
-### Contruction of a Mean-Variance Optimal Portfolio
+### Mean-Variance Portfolio Optimisation
 
 I contructed a well-diversified portfolio of 20 stocks listed on the Johannesburg Stock Exchange using Harry Markowitz's mean-variance theory. My task involved picking the stocks, justifying their inclusion, and extracting data for indexes, exchange rates, and Treasury Bill rates.
 
