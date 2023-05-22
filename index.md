@@ -1,6 +1,4 @@
-# Portfolio
-Data Science Projects
-[View Portfolio on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/index.md)
+## Portfolio
 ---
 
 ### Predicting Customer Churn in a Telecommunications Company
