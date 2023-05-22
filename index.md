@@ -1,6 +1,5 @@
-## Portfolio
+# Portfolio
 [View code on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/index.md)
-#[View Portfolio on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/index.md)
 ---
 
 ### Predicting Customer Churn in a Telecommunications Company
