@@ -37,7 +37,7 @@ Using Brazilian COVID-19 data, I performed a descriptive analysis of hospitalize
 
 ### Insurance Risk Analysis Model
 
-By examining data from 2010-2015, I completed an analysis of Austrlian SMEs business insurance claims for building cover. The task involved exploratory data analysis, occupational risk factor grouping, and claims cost modeling. To create the occipational risk factor grouping I utilised K means clustering and created a risk score for each ANZIC 2 code. For the claims cost modelling I choose gradient boosting machines due to its higher accuracy over random forest. 
+By examining data from 2010-2015, I completed an analysis of Australian SMEs insurance claims for building cover. The task involved exploratory data analysis, occupational risk factor grouping, and claims cost modeling. To create the occipational risk factor grouping I utilised K means clustering and created a risk score for each ANZIC 2 code. For the claims cost modelling I choose gradient boosting machines due to its higher accuracy over random forest. 
 
 <img src="Projects/Insurance Risk Analysis Model/Risk Values across Hazard Rating Levels.png?raw=true"/>
 
