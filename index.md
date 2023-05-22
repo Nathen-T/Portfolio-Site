@@ -24,7 +24,6 @@ I contructed a well-diversified portfolio of 20 stocks listed on the Johannesbur
 [View code on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Mean%20Variance%20Optimal%20Porfolio/r%20code%20markdown.Rmd)
 
 ---
-[Project 3 Title](http://example.com/)
 
 ### Survival Analysis of COVID-19 Patients
 
@@ -37,6 +36,8 @@ Using Brazilian COVID-19 data, I performed a descriptive analysis of hospitalize
 [View code on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Survival%20Analysis%20of%20COVID-19%20Patients/R%20code.R)
 
 ---
+
+### Next Project
 
 ### Category Name 2
 
