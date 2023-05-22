@@ -32,7 +32,7 @@ I contructed a well-diversified portfolio of 20 stocks listed on the Johannesbur
 
 Using Brazilian COVID-19 data, I performed a descriptive analysis of hospitalized COVID-19 patients and conducted survival analysis using Kaplan-Meier and Cox regression methods. Additionally, I modeled the pathway of COVID-19 patients using a multistate model and estimated age-specific transition rates. 
 
-<img src="Projects/Survival Analysis of COVID-19 Patients/Symptoms and Comorbidities plot.png?raw=true"/>
+<img src="Projects/Survival Analysis of COVID-19 Patients/symptoms and comorbidities.png?raw=true"/>
 
 ---
 
