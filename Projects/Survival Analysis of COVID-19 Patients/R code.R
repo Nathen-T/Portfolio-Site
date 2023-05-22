@@ -386,7 +386,7 @@ a65_50 <- autoplot(survfit(Surv(os_days,covidDeath) ~ above65, data = age65), co
   scale_x_continuous(limits= c(0,50))
 
 p_a65 <- ggsurvplot(survfit(Surv(os_days,covidDeath) ~ above65, data = age65), conf.int = TRUE, 
-           legend.title = '', legend.labs = c('Older than 65', '65 or younger'), legend = 'bottom',
+           legend.title = '', legend.labs = c('65 or younger', 'Older than 65'), legend = 'bottom',
            ggtheme = theme_bw(),
            xlim = c(0,100),
            break.x.by = 50,
