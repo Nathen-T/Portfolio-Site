@@ -1,5 +1,6 @@
 ## Portfolio
-[View Portfolio on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/index.md)
+[View code on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/index.md)
+#[View Portfolio on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/index.md)
 ---
 
 ### Predicting Customer Churn in a Telecommunications Company
@@ -35,6 +36,8 @@ Using Brazilian COVID-19 data, I performed a descriptive analysis of hospitalize
 <img src="Projects/Survival Analysis of COVID-19 Patients/symptoms and comorbidities.png?raw=true"/> <img src="Projects/Survival Analysis of COVID-19 Patients/Transition rate and KM Estiamtor.jpg?raw=true"/>
 
 [![](https://img.shields.io/badge/-R-white?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAMAAAB4W0xQAAAA7VBMVEVHcEweZLe2uLy/uLMiab4jab4gZbYhZ7q7vcG4ur24ur20tbkYYrciab4dY7a+wMO9v8KkpKmZmJ6lqK+7vMCioaSsrrKssLiSkZhafaqZmZ+1t7onZq8eZLchZ7teiLsZX6++wcTAwsWmp6yxs7e1t7u/wcSjpKmwsra2uLyqq7CnpqilpqurrbFJebV5jqqoqa6jo6iwsrYYXas9b6srabKYmJ98j6ohZrkxbLN3lr2AlrOvsLQfZbcjab0ka8EfZbghZ7toi7dogqQYXq4YXqwjZK8aYK9NdqlngKJthKSstAAcZLasrbKztLizfXlDAAAAS3RSTlMA2hMKR/v5/f799tQ94fG+3fETobM+8GB1lbPkMeLzNP4+OmuO62DOw4ZYdzgRZ/C8ybEFornHnrGvRl/hycPYIrc/h5Tk6YHlVsBf6SxoAAAAmUlEQVQI1x3NVRaCUABF0QvIezSoICGI3d3dvcD5D0f0/O2vA4Ctm4Yk5cd2D0llXRDEvCxvc8MuUDIE0bTXYXjeZEcWdEFsccpBVVVmufAgiTKLFM/vT4VoNUft0+QSFlLHXTTzUI1z7YQ0YEjgOmCzcbrTp5Qh2tTJAFylkR5Q8n5Gd/83RsZyKbm8mOJ18jcUTfPxKN6UL8ZJD0wsoC6nAAAAAElFTkSuQmCC)](#) [![](https://img.shields.io/badge/ggplot2-white?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAANCAMAAACq939wAAAAaVBMVEX29vampqbb29rW1tb8/Pzt7u+5ubr09PT////5+fnIyMji4+Pc3+GwsLC0tbXk5OW8vLzS0tOjo6Tn6OnLy8urq6ufn5+FteP89/LI1+bEy9G/vr1ycn6UqLq+vLqEhZJAV3dtnMhZfaDoCa+WAAAAgElEQVQI1x3ORxbDIBADUFGmAAYbdzs99z9kiHfS00IfEPEao3oRQKDJlGKSthikjJ16axgBtEaljQJed8CxHudH6puyhX12G+3fs/dDK49phxxA4FZYnHXVxakt7jatq8m50OBAY0y2lyBxpPbDS1JfDUu4BAtn0/8Fl22eL9sP/gcGCFFiIEkAAAAASUVORK5CYII=)](#) [![](https://img.shields.io/badge/Cox%20Regression-white?logo=Cox%20Regression)](#) [![](https://img.shields.io/badge/KM%20Estimator-white?logo=KM%20Estimator)](#)
+
+[View code on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Survival%20Analysis%20of%20COVID-19%20Patients/R%20code.R)
 ---
 
 ### Category Name 2
