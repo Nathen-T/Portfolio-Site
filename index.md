@@ -35,7 +35,12 @@ Using Brazilian COVID-19 data, I performed a descriptive analysis of hospitalize
 
 ---
 
-### Next Project
+### Insurance Risk Analysis Model
+
+By examining data from 2010-2015, I successfully completed an analysis of small business insurance claims for building cover, focusing on Australian SMEs. The task involved exploratory data analysis, occupation risk factor grouping, and claims cost modeling. I gained insights into the drivers of insurance claims and developed a model to estimate claims costs for different claim cause groups.
+
+
+---
 
 ### Category Name 2
 
