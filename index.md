@@ -48,6 +48,12 @@ By examining data from 2010-2015, I completed an analysis of Australian SMEs ins
 
 ---
 
+### Clustering Heart Disease Patients
+
+Doctors frequently study former cases to learn how to best treat their patients. A patient who has a similar health history or symptoms to a previous patient could benefit from undergoing the same treatment. This project investigates whether doctors might be able to group together patients to target treatments using common unsupervised learning techniques such as k-means, hierarchical clustering and DBSCAN
+
+<img src="Projects/Clustering Heat Disease Patients/plot.png?raw=true"/>
+
 ### Category Name 2
 
 - [Project 1 Title](http://example.com/)
