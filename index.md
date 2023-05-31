@@ -65,6 +65,6 @@ I contructed a well-diversified portfolio of 20 stocks listed on the Johannesbur
 
   [![](https://img.shields.io/badge/Python-white?logo=Python)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#) [![](https://img.shields.io/badge/MySQL-white?logo=MySQL)](#) [![](https://img.shields.io/badge/Spotify%20API-white?logo=Spotify)](#) [![](https://img.shields.io/badge/Power%20BI-white?logo=PowerBI)](#)
 
-- Ninentdo Sales Dashboard
+- Nintendo Sales Dashboard
   
   [![](https://img.shields.io/badge/Tableau-white?logo=Tableau)](#)
