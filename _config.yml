@@ -1,13 +1,8 @@
 title: Nathan Truong # your name (or website title) here
 logo: "/images/IMG_3047.jpeg?raw=true" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
-  Data Graduate at the Australian Taxation Office. With a degree in Actuarial Studies (Distinction) and a passion for data science. Proficient in R, Python, SQL, and Power BI, I have commercial experience in automating workflows, data analysis, and making data-driven decisions.
-  <br><br>
-  Second description 
+  Data Graduate at the ATO. With a double degree in Actuarial Studies (Distinction) and Commerce from UNSW and a passion for data science. Proficient in R, Python, SQL, and Power BI, I have commercial experience in automating workflows, data analysis, and making data-driven decisions.
   <br><br>
   <a href="https://www.linkedin.com/in/n-truong/">View My LinkedIn Profile</a> 
   
-remote_theme: pages-themes/minimal@v0.2.0
-plugins:
-- jekyll-remote-theme
 google_analytics: G-4JC6QJV6N6 # your Google Analytics tracking ID here
