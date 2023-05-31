@@ -61,7 +61,7 @@ I contructed a well-diversified portfolio of 20 stocks listed on the Johannesbur
 ---
 ### Projects Under Development
 
-- [Analysis and Dashboard my Spotify Music Taste](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Analysis%20of%20my%20Spotify%20Data/Analysis%20of%20my%20spotify%20music%20taste.ipynb)
+- [Analysis and Dashboard of my Spotify Music Taste](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Analysis%20of%20my%20Spotify%20Data/Analysis%20of%20my%20spotify%20music%20taste.ipynb)
 
   [![](https://img.shields.io/badge/Python-white?logo=Python)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#) [![](https://img.shields.io/badge/MySQL-white?logo=MySQL)](#) [![](https://img.shields.io/badge/Spotify%20API-white?logo=Spotify)](#) [![](https://img.shields.io/badge/Power%20BI-white?logo=PowerBI)](#)
 
