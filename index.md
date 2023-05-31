@@ -1,4 +1,4 @@
-## Portfolio
+## Selected Data Science and Actuarial Projects
 ---
 
 ### Survival Analysis of COVID-19 Patients
