@@ -15,7 +15,7 @@ Using Brazilian COVID-19 data, I performed a descriptive analysis of hospitalize
 
 ### Clustering Heart Disease Patients
 
-Doctors frequently study former cases to learn how to best treat their patients. A patient who has a similar health history or symptoms to a previous patient could benefit from undergoing the same treatment. This project investigates whether doctors might be able to group together patients to target treatments using common unsupervised learning techniques such as k-means, hierarchical clustering and DBSCAN
+Doctors frequently study former cases to learn how to best treat their patients. A patient who has a similar health history or symptoms to a previous patient could benefit from undergoing the same treatment. This project investigates whether doctors might be able to group together patients to target treatments using common unsupervised learning techniques such as k-means, hierarchical clustering and DBSCAN.
 
 <img src="Projects/Clustering Heat Disease Patients/plot trim.png?raw=true"/>
 
@@ -27,7 +27,7 @@ Doctors frequently study former cases to learn how to best treat their patients.
 
 ### Insurance Risk Analysis Model
 
-By examining data from 2010-2015, I completed an analysis of Australian SMEs insurance claims for building cover. The project involved exploratory data analysis, occupational risk factor grouping, and claims cost modeling. To create the occipational risk factor grouping I utilised K means clustering and created a risk score for each ANZIC 2 code. For the claims cost modelling I choose gradient boosting machines due to its higher accuracy over random forest. 
+By examining data from 2010-2015, I completed an analysis of Australian SMEs insurance claims for building cover. The project involved exploratory data analysis, occupational risk factor grouping, and claims cost modeling. To create the occupational risk factor grouping I utilised K means clustering and created a risk score for each ANZIC 2 code. For the claims cost modelling I choose gradient boosting machines due to its higher accuracy over random forest. 
 
 <img src="Projects/Insurance Risk Analysis Model/Risk Values across Hazard Rating Levels.png?raw=true"/>
 
