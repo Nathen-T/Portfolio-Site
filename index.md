@@ -5,7 +5,9 @@
 
 By connecting to Spotify's API I extracted data relating to my music taste, such as top tracks, top artist, liked songs and recently played. I analysed there dataset using MySQL getting useful insights before creating a dashboard using Power BI.
 
-  [![](https://img.shields.io/badge/Python-white?logo=Python)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#) [![](https://img.shields.io/badge/MySQL-white?logo=MySQL)](#) [![](https://img.shields.io/badge/Spotify%20API-white?logo=Spotify)](#) [![](https://img.shields.io/badge/Power%20BI-white?logo=PowerBI)](#)
+<img src="Projects/Analysis of my Spotify Data/PowerBI dashboard.jpg?raw=true"/>
+
+[![](https://img.shields.io/badge/Python-white?logo=Python)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#) [![](https://img.shields.io/badge/MySQL-white?logo=MySQL)](#) [![](https://img.shields.io/badge/Spotify%20API-white?logo=Spotify)](#) [![](https://img.shields.io/badge/Power%20BI-white?logo=PowerBI)](#)
 
 [View on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Analysis%20of%20my%20Spotify%20Data/Analysis%20of%20my%20spotify%20music%20taste.ipynb)
 
