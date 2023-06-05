@@ -1,6 +1,16 @@
 ## Selected Data Science and Actuarial Projects
 ---
 
+### Analysis and Dashboard of my Spotify Music Taste
+
+By connecting to Spotify's API I extracted data relating to my music taste, such as top tracks, top artist, liked songs and recently played. I analysed there dataset using MySQL getting useful insights before creating a dashboard using Power BI.
+
+  [![](https://img.shields.io/badge/Python-white?logo=Python)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#) [![](https://img.shields.io/badge/MySQL-white?logo=MySQL)](#) [![](https://img.shields.io/badge/Spotify%20API-white?logo=Spotify)](#) [![](https://img.shields.io/badge/Power%20BI-white?logo=PowerBI)](#)
+
+[View on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Analysis%20of%20my%20Spotify%20Data/Analysis%20of%20my%20spotify%20music%20taste.ipynb)
+
+---
+
 ### Survival Analysis of COVID-19 Patients
 
 Using Brazilian COVID-19 data, I performed a descriptive analysis of hospitalized COVID-19 patients and conducted survival analysis using Kaplan-Meier and Cox regression methods. Additionally, I modeled the pathway of COVID-19 patients using a multistate model and estimated age-specific transition rates. Age was a highly significant factor of death.
@@ -60,10 +70,6 @@ I contructed a well-diversified portfolio of 20 stocks listed on the Johannesbur
 
 ---
 ### Projects Under Development
-
-- [Analysis and Dashboard of my Spotify Music Taste](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Analysis%20of%20my%20Spotify%20Data/Analysis%20of%20my%20spotify%20music%20taste.ipynb)
-
-  [![](https://img.shields.io/badge/Python-white?logo=Python)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#) [![](https://img.shields.io/badge/MySQL-white?logo=MySQL)](#) [![](https://img.shields.io/badge/Spotify%20API-white?logo=Spotify)](#) [![](https://img.shields.io/badge/Power%20BI-white?logo=PowerBI)](#)
 
 - Nintendo Sales Dashboard
   
