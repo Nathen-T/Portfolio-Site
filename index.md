@@ -3,7 +3,7 @@
 
 ### Analysis and Dashboard of my Spotify Music Taste
 
-By connecting to Spotify's API I extracted data relating to my music taste, such as top tracks, top artist, liked songs and recently played. I analysed there dataset using MySQL getting useful insights before creating a dashboard using Power BI.
+Through the integration of Spotify's API, I successfully extracted comprehensive data pertaining to my personal music preferences, encompassing top tracks, favourite artists, liked songs, and recently played tracks. Leveraging the potential of MySQL, I conducted an in-depth analysis of this dataset, unearthing valuable insights and actionable information. Subsequently, I employed the dynamic visualization capabilities of Power BI to craft an intuitive and visually compelling dashboard, effectively showcasing the derived findings.
 
 <img src="Projects/Analysis of my Spotify Data/PowerBI dashboard.jpg?raw=true"/>
 
