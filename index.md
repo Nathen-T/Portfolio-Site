@@ -49,7 +49,7 @@ By examining data from 2010-2015, I completed an analysis of Australian SMEs ins
 [View code on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Insurance%20Risk%20Analysis%20Model/R%20Code.R)
 
 ---
-### Society of Actuaries (SOA) Research Case Study 
+### Society of Actuaries (SOA) Research Case Study Challenge
 
 The aim of this research project was to create a highly competitive national football team for Rarita, fostering a strong brand and generating significant economic opportunities. In a group of 4, we had built a football team that would rank within the top 10 members of the FSA within five years and having a high probability of winning an FSA championship within 10 years. To do this we carefully selected and forecasted 15 exceptional players from a large dataset that included Player Statistics on performance metrics such as scoring, passing, defense and goalkeeping. This study explores the economic impact, risks, and selection process of our team, highlighting the potential for substantial growth and transformative change for Rarita.
 
