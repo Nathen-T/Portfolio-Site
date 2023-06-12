@@ -92,6 +92,5 @@ I contructed a well-diversified portfolio of 20 stocks listed on the Johannesbur
 ---
 ### Projects Under Development
 
-- Nintendo Sales Dashboard
-  
-  [![](https://img.shields.io/badge/Tableau-white?logo=Tableau)](#)
+- Using CNN for Music Artist Detection
+
