@@ -29,9 +29,11 @@ Using Brazilian COVID-19 data, I performed a descriptive analysis of hospitalize
 
 Developed a music genre classification system using deep learning models. Trained and evaluated feed-forward neural networks (FNN), support vector machines (SVM), and k-nearest neighbors (KNN) models on the GTZAN dataset, consisting of 1,000 audio tracks from ten genres. The FNN model achieved the highest test accuracy of 92%, accurately capturing the distinguishing characteristics of different genres.
 
-[![](https://img.shields.io/badge/Python-white?logo=Python)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#) [![](https://img.shields.io/badge/sklearn-white?logo=scikit-learn)](#) [![](https://img.shields.io/badge/tensorflow-white?logo=tensorflow)](#) [![](https://img.shields.io/badge/librosa-white?logo=librosa)](#)
+<img src="Projects/Music Genre Classification/FNN Image.jpg?raw=true"/>
 
-[View code on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Survival%20Analysis%20of%20COVID-19%20Patients/R%20code.R)
+[![](https://img.shields.io/badge/Python-white?logo=Python)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#) [![](https://img.shields.io/badge/sklearn-white?logo=scikit-learn)](#) [![](https://img.shields.io/badge/tensorflow-white?logo=tensorflow)](#) [![](https://img.shields.io/badge/librosa-white?logo=librosa)](#) 
+
+[View code on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Music%20Genre%20Classification/Music%20Genre%20Classification.ipynb)
 
 ---
 
