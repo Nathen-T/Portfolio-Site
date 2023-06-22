@@ -25,6 +25,16 @@ Using Brazilian COVID-19 data, I performed a descriptive analysis of hospitalize
 
 ---
 
+### Music Genre Classifcation using Deep Learning
+
+Developed a music genre classification system using deep learning models. Trained and evaluated feed-forward neural networks (FNN), support vector machines (SVM), and k-nearest neighbors (KNN) models on the GTZAN dataset, consisting of 1,000 audio tracks from ten genres. The FNN model achieved the highest test accuracy of 92%, accurately capturing the distinguishing characteristics of different genres.
+
+[![](https://img.shields.io/badge/Python-white?logo=Python)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#) [![](https://img.shields.io/badge/sklearn-white?logo=scikit-learn)](#) [![](https://img.shields.io/badge/tensorflow-white?logo=tensorflow)](#) [![](https://img.shields.io/badge/librosa-white?logo=librosa)](#)
+
+[View code on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Survival%20Analysis%20of%20COVID-19%20Patients/R%20code.R)
+
+---
+
 ### Clustering Heart Disease Patients
 
 Doctors frequently study former cases to learn how to best treat their patients. A patient who has a similar health history or symptoms to a previous patient could benefit from undergoing the same treatment. This project investigates whether doctors might be able to group together patients to target treatments using common unsupervised learning techniques such as k-means, hierarchical clustering and DBSCAN.
