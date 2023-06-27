@@ -104,5 +104,5 @@ I contructed a well-diversified portfolio of 20 stocks listed on the Johannesbur
 ---
 ### Projects Under Development
 
-- Using CNN for Music Artist Detection
+- Using CNN for Face Mask Detection
 
