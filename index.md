@@ -13,6 +13,12 @@ Utilising Spotify's API, I gathered extensive data on my music preferences inclu
 
 ---
 
+### Face Mask Detection
+
+In my face mask detection project, I utilised Ultralytics YOLOv8 model to develop a robust model capable of identifying individuals wearing, not wearing, or incorrectly wearing face masks. By training the model on a diverse dataset and optimizing it for efficiency, I achieved impressive accuracy in crowded environments. 
+
+---
+
 ### Survival Analysis of COVID-19 Patients
 
 Using Brazilian COVID-19 data, I performed a descriptive analysis of hospitalized COVID-19 patients and conducted survival analysis using Kaplan-Meier and Cox regression methods. Additionally, I modeled the pathway of COVID-19 patients using a multistate model and estimated age-specific transition rates. Age was a highly significant factor of death.
