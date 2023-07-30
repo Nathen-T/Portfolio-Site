@@ -17,6 +17,12 @@ Utilising Spotify's API, I gathered extensive data on my music preferences inclu
 
 In my face mask detection project, I utilised Ultralytics YOLOv8 model to develop a robust model capable of identifying individuals wearing, not wearing, or incorrectly wearing face masks. By training the model on a diverse dataset and optimizing it for efficiency, I achieved impressive accuracy in crowded environments. 
 
+<img src="Projects/Face Mask Detection/val_batch0_labels.jpg?raw=true"/>
+
+[![](https://img.shields.io/badge/Python-white?logo=Python)](#) [![](https://img.shields.io/badge/Jupyter-white?logo=Jupyter)](#) [![](https://img.shields.io/badge/Ultralytics-white?logo=Ultralytics)](#)
+
+[View code on Github](https://github.com/Nathen-T/Portfolio-Site/blob/master/Projects/Face%20Mask%20Detection/Face%20Mask%20Detection.ipynb)
+
 ---
 
 ### Survival Analysis of COVID-19 Patients
